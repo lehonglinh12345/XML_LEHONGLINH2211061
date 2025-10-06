@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE thuvien SYSTEM "thuvien.dtd">
+<thuvien>
+    <sach>
+        <title>sach thuc hanh 1</title>
+        <author>nguyen van a</author>
+        <year>2024</year>
+        <genre>kinh di</genre>
+    </sach>
+    <sach>
+        <title>sach thuc hanh 2</title>
+        <author>nguyen van b</author>
+        <year>2025</year>
+        <genre>hoat hinh</genre>
+    </sach>
+    <sach>
+        <title>sach thuc hanh 3</title>
+        <author>nguyen van c</author>
+        <year>2026</year>
+        <genre>kinh dị</genre>
+    </sach>
+</thuvien>
