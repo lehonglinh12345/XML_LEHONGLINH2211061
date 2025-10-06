@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dssv xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="sinhvien.xsd">
+    <khoa>
+        <ma>K1</ma>
+        <ten>cntt</ten>
+    </khoa>
+    <khoa>
+        <ma>K2</ma>
+        <ten>kinhte</ten>
+    </khoa>
+    <lop>
+        <ma>L01</ma>
+        <ten>20CNTT1</ten>
+        <khoa_ref>K1</khoa_ref>
+    </lop>
+    <lop>
+        <ma>L02</ma>
+        <ten>20CNTT2</ten>
+        <khoa_ref>K1</khoa_ref>
+    </lop>
+
+    <sinhvien>
+        <mssv>SV001</mssv>
+        <hoten>Le hong linh</hoten>
+        <email>l@gmail.com</email>
+        <diachi>Can Tho</diachi>
+        <sdt>0123456789</sdt>
+        <lop_ref>L01</lop_ref>
+    </sinhvien>   
+
+</dssv>

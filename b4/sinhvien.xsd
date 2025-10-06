@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Định nghĩa kiểu dữ liệu dùng chung -->
+    <xs:simpleType name="maType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="tenType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Ràng buộc số điện thoại -->
+    <xs:simpleType name="phoneType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="0[0-9]{9}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Ràng buộc tên khoa chỉ gồm ký tự a-z -->
+    <xs:simpleType name="khoaTenType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="dssv">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="khoa" minOccurs="1" maxOccurs="unbounded" >
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ma" type="maType"/>
+                            <xs:element name="ten" type="khoaTenType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="lop" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ma" type="maType"/>
+                            <xs:element name="ten" type="tenType"/>
+                            <xs:element name="khoa_ref" type="maType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="sinhvien" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="mssv" type="maType"/>
+                            <xs:element name="hoten" type="tenType"/>
+                            <xs:element name="email" type="xs:string"/>
+                            <xs:element name="diachi" type="xs:string"/>
+                            <xs:element name="sdt" type="phoneType"/>
+                            <xs:element name="lop_ref" type="maType"/> 
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+        
+        <xs:key name="KhoaKey">
+            <xs:selector xpath="khoa"/>
+            <xs:field xpath="ma"/>
+        </xs:key>
+        
+        <xs:key name="LopKey">
+            <xs:selector xpath="lop"/>
+            <xs:field xpath="ma"/>
+        </xs:key>
+        <xs:key name="SinhVienKey">
+            <xs:selector xpath="sinhvien"/>
+            <xs:field xpath="mssv"/>
+        </xs:key>
+        <xs:keyref name="LopKhoaRef" refer="KhoaKey">
+            <xs:selector xpath="lop"/>
+            <xs:field xpath="khoa_ref"/>
+        </xs:keyref>
+        <xs:keyref name="SVLopRef" refer="LopKey">
+            <xs:selector xpath="sinhvien"/>
+            <xs:field xpath="lop_ref"/>
+        </xs:keyref>
+    </xs:element>
+</xs:schema>
